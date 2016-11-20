@@ -1,0 +1,32 @@
+<div class="row">
+  <table class="highlight responsive-table">
+    <thead>
+      <tr>
+        <th data-field="id">NIT</th>
+        <th data-field="name">Nombre empresa</th>
+        <th data-field="name">Acciones</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="empresa in about.empresas">
+        <td>{{empresa.NIT}}</td>
+        <td>{{empresa.NOMBRE}}</td>
+        <td>
+          <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+
+            <md-button class="md-fab md-primary" aria-label="Editar">
+              <md-icon md-font-icon="mdi mdi-pencil"></md-icon>
+            </md-button>
+
+            <md-button class="md-fab" aria-label="Eliminar">
+              <md-icon md-font-icon="mdi mdi-delete"></md-icon>
+            </md-button>
+
+          </section>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
