@@ -92,3 +92,11 @@ body {
   main {
     flex: 1 0 auto;
   }
+
+/* tamaño sidenav */
+
+.site-sidenav, .site-sidenav.md-locked-open-add-active, .site-sidenav.md-locked-open {
+    width: 450px;
+    min-width: 450px;
+    max-width: 450px;
+}

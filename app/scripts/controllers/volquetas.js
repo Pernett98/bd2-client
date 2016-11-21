@@ -30,6 +30,11 @@
       type: 'create'
     };
 
+    vm.tableConfig = {
+      showSearch: false,
+      selected: []
+    };
+
     vm.openModal = openModal;
     vm.createVolqueta = createVolqueta;
     vm.openEditModal = openEditModal;
@@ -66,6 +71,7 @@
     }
 
     function openModal() {
+      vm.formVolqueta = {};
       vm.modalConfig = {
         title: 'Crear Volqueta',
         submitFunction: createVolqueta,
@@ -112,6 +118,7 @@
 
       $mdDialog.show(confirm).then(function() {
         serviceVolquetas.deleteVolqueta(data).then(function (result) {
+          getAllVolquetas();
         });
       });
     }

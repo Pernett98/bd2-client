@@ -65,7 +65,7 @@
     function deleteVolqueta(data) {
       var deferred = $q.defer();
 
-      $http.delete('http://127.0.0.1:8089/volquetas/?PLACA=' + data.PLACA, data).then(function (resul) {
+      $http.delete('http://127.0.0.1:8089/volquetas/?PLACA=' + data.PLACA).then(function (result) {
         serviceNotification.warning("Volqueta eliminada", 3000, 'scc-delete-volqueta');
         deferred.resolve(result);
       }, function (result) {
