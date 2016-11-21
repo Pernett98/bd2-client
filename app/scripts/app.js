@@ -20,15 +20,20 @@ angular
     'ngMaterial',
     'ui.materialize',
     'md.data.table',
-    'ui.router'
+    'ui.router',
+    'md.data.table'
   ]);
 
 
-  angular.module('bd2ClientApp').config(['$httpProvider', function($httpProvider) {
-    $httpProvider.defaults.useXDomain = true;
-$httpProvider.defaults.withCredentials = true;
-delete $httpProvider.defaults.headers.common["X-Requested-With"];
-$httpProvider.defaults.headers.common["Accept"] = "application/json";
-$httpProvider.defaults.headers.common["Content-Type"] = "application/json";
-      }
-  ]);
+angular.module('bd2ClientApp').config(['$httpProvider', function($httpProvider) {
+  $httpProvider.defaults.useXDomain = true;
+  $httpProvider.defaults.withCredentials = true;
+  delete $httpProvider.defaults.headers.common["X-Requested-With"];
+  $httpProvider.defaults.headers.common["Accept"] = "application/json";
+  $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+  $httpProvider.defaults.headers.post = "Content-Type: application/json";
+  $httpProvider.defaults.headers.put = "Content-Type: application/json";
+  $httpProvider.defaults.headers.delete = "Content-Type: application/json";
+
+
+}]);

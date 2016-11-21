@@ -13,6 +13,14 @@
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/ventas_entradas', {
+          templateUrl: 'views/ventas.entradas.html',
+          controller: 'VentasEntradasCtrl as VentasEntradasVM'
+      })
+      .when('/volquetas', {
+        templateUrl: 'views/volquetas.html',
+        controller: 'VolquetasCtrl as volquetasVm'
+      })
       .otherwise({
         redirectTo: '/'
       });

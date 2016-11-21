@@ -18,62 +18,100 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="bd2ClientApp">
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+  <body ng-app="bd2ClientApp" ng-controller="IndexCtrl">
+    <!--[if lte IE 8]> <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
 
     <!-- Add your site or application content here -->
 
     <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Escombrera el Manantial</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#/about">Navbar Link</a></li>
-      </ul>
 
-      <ul id="nav-mobile" class="side-nav" style="transform: translateX(-100%);">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
+      <div class="nav-wrapper container">
+        <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md>
+          Toggle left
+        </md-button>
 
+        <a id="logo-container" href="#" class="brand-logo">Escombrera el Manantial</a>
+        <!-- <ul class="right hide-on-med-and-down">
+          <li>
+            <a href="#/about">Navbar Link</a>
+          </li>
+        </ul>
 
-    <div class="container">
-    <div ng-view autoscroll="false" ng-cloak bs-affix-target init-ripples></div>
-    </div>
+        <ul id="nav-mobile" class="side-nav" style="transform: translateX(-100%);">
+          <li>
+            <a href="#">Navbar Link</a>
+          </li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse">
+          <i class="material-icons">menu</i>
+        </a> -->
+      </div>
+    </nav>
 
+    <section layout="row" flex>
+      <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        <md-toolbar class="light-blue">
+          <h1 class="md-toolbar-tools">Menú</h1>
+        </md-toolbar>
+        <md-content layout-padding>
+          <md-list flex>
+            <md-list-item class="" href="#/volquetas">
+              volquetas
+            </md-list-item>
+          </md-list>
+          <md-button ng-click="close()" class="md-primary" hide-gt-md>
+            Close Sidenav Left
+          </md-button>
+          <p hide show-gt-md>
+            This sidenav is locked open on your device. To go back to the default behavior, narrow your display.
+          </p>
+        </md-content>
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
+      </md-sidenav>
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/angular-aria/angular-aria.js"></script>
-    <script src="bower_components/angular-material/angular-material.js"></script>
-    <script src="bower_components/materialize/bin/materialize.js"></script>
-    <script src="bower_components/angular-materialize/src/angular-materialize.js"></script>
-    <script src="bower_components/angular-material-data-table/dist/md-data-table.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+        <md-content flex layout-padding>
+          <div ng-view autoscroll="false" ng-cloak></div>
+        </md-content>
+        <section>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+        <script>
+          !function(A, n, g, u, l, a, r) {
+            A.GoogleAnalyticsObject = l,
+            A[l] = A[l] || function() {
+              (A[l].q = A[l].q || []).push(arguments)
+            },
+            A[l].l =+ new Date,
+            a = n.createElement(g),
+            r = n.getElementsByTagName(g)[0],
+            a.src = u,
+            r.parentNode.insertBefore(a, r)
+          }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+          ga('create', 'UA-XXXXX-X');
+          ga('send', 'pageview');
+        </script>
+
+        <!-- build:js(.) scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-touch/angular-touch.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.js"></script>
+        <script src="bower_components/angular-material/angular-material.js"></script>
+        <script src="bower_components/materialize/bin/materialize.js"></script>
+        <script src="bower_components/angular-materialize/src/angular-materialize.js"></script>
+        <script src="bower_components/angular-material-data-table/dist/md-data-table.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
@@ -81,6 +119,15 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/services/service.about.js"></script>
+        <script src="scripts/services/service.ventasentradas.js"></script>
+        <script src="scripts/controllers/ventas.entradas.js"></script>
+        <script src="scripts/controllers/index.js"></script>
+        <script src="scripts/services/service.volquetas.js"></script>
+        <script src="scripts/controllers/volquetas.js"></script>
+        <script src="scripts/services/service.empresas.js"></script>
+        <script src="scripts/services/service.colores.js"></script>
+        <script src="scripts/services/service.modelos.js"></script>
+        <script src="scripts/services/service.notification.js"></script>
         <!-- endbuild -->
-</body>
-</html>
+      </body>
+    </html>

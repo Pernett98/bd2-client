@@ -1,0 +1,44 @@
+<div class="row">
+  <table class="highlight responsive-table">
+    <thead>
+      <tr>
+        <th data-field="id">Id venta</th>
+        <th data-field="name">Nombre empresa</th>
+        <th data-field="id_car">Placa de volqueta</th>
+        <th data-field="date">Fecha venta</th>
+        <th data-field="price">Precio entrada</th>
+        <th data-field="count">Cantidad de entradas</th>
+        <th data-field="user">Usuario</th>
+        <th data-field="acctions">Acciones</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="empresa in VentasEntradasVM.ventas">
+        <td>{{empresa.ID_VENTA}}</td>
+        <td>{{empresa.EMPRESA}}</td>
+        <td>{{empresa.PLACA}}</td>
+        <td>{{empresa.FECHA_VENTA | date}}</td>
+        <td>{{empresa.VALOR_ENTRADA}}</td>
+        <td>{{empresa.CANTIDAD_ENTRADAS}}</td>
+        <td>{{empresa.NOMBRE_USUARIO}}</td>
+
+
+        <td>
+          <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+
+            <md-button class="md-fab md-primary" aria-label="Editar">
+              <md-icon md-font-icon="mdi mdi-pencil"></md-icon>
+            </md-button>
+
+            <md-button class="md-fab" aria-label="Eliminar">
+              <md-icon md-font-icon="mdi mdi-delete"></md-icon>
+            </md-button>
+
+          </section>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
