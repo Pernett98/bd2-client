@@ -19,14 +19,14 @@ angular.module('bd2ClientApp')
         .module('bd2ClientApp')
         .service('serviceColores', serviceColores);
 
-    serviceColores.$inject = ['$http'];
+    serviceColores.$inject = ['$http', 'constantConfig'];
 
     /* @ngInject */
-    function serviceColores($http) {
+    function serviceColores($http, constantConfig) {
         this.getAllColores = getAllColores;
 
         function getAllColores() {
-          return $http.get('http://127.0.0.1:8089/colores');
+          return $http.get(constantConfig.serverIp + '/colores');
         }
     }
 })();

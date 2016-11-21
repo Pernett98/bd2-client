@@ -13,14 +13,14 @@
     .module('bd2ClientApp')
     .service('serviceAbout', serviceAbout);
 
-  serviceAbout.$inject = ['$http'];
+  serviceAbout.$inject = ['$http', 'constantConfig'];
 
   /* @ngInject */
-  function serviceAbout($http) {
+  function serviceAbout($http, constantConfig) {
     this.getEmpresas = getEmpresas;
 
     function getEmpresas() {
-      return $http.get('http://127.0.0.1:8089/empresas');
+      return $http.get(constantConfig.serverIp + '/empresas');
     }
   }
 })();

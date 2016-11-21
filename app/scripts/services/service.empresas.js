@@ -20,14 +20,14 @@ angular.module('bd2ClientApp')
         .module('bd2ClientApp')
         .service('serviceEmpresas', serviceEmpresas);
 
-    serviceEmpresas.$inject = ['$http'];
+    serviceEmpresas.$inject = ['$http', 'constantConfig'];
 
     /* @ngInject */
-    function serviceEmpresas($http) {
+    function serviceEmpresas($http, constantConfig) {
         this.getAllEmpresas = getAllEmpresas;
 
         function getAllEmpresas() {
-          return $http.get('http://127.0.0.1:8089/empresas');
+          return $http.get(constantConfig.serverIp + '/empresas');
         }
     }
 })();

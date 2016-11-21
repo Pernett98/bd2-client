@@ -13,10 +13,10 @@
     .module('bd2ClientApp')
     .service('serviceVolquetas', serviceVolquetas);
 
-  serviceVolquetas.$inject = ['$http', '$q', 'serviceNotification'];
+  serviceVolquetas.$inject = ['$http', '$q', 'serviceNotification', 'constantConfig'];
 
   /* @ngInject */
-  function serviceVolquetas($http, $q, serviceNotification) {
+  function serviceVolquetas($http, $q, serviceNotification, constantConfig) {
     this.getAllVolquetas = getAllVolquetas;
     this.createVolqueta = createVolqueta;
     this.updateVolqueta = updateVolqueta;
@@ -25,7 +25,7 @@
     function getAllVolquetas() {
       var deferred = $q.defer();
 
-      $http.get('http://127.0.0.1:8089/volquetas').then(function(result) {
+      $http.get(constantConfig.serverIp + '/volquetas').then(function(result) {
         deferred.resolve(result.data);
       }, function(err) {
         reject(err);
@@ -37,7 +37,7 @@
     function createVolqueta(data) {
       var deferred = $q.defer();
 
-      $http.post('http://127.0.0.1:8089/volquetas', data).then(function (result) {
+      $http.post(constantConfig.serverIp + '/volquetas', data).then(function (result) {
         serviceNotification.success("Volqueta creada", 3000, 'scc-create-volqueta');
         deferred.resolve(result);
       },function (result) {
@@ -51,7 +51,7 @@
     function updateVolqueta(data) {
       var deferred = $q.defer();
 
-      $http.put('http://127.0.0.1:8089/volquetas/?PLACA=' + data.PLACA, data).then(function (result) {
+      $http.put(constantConfig.serverIp + '/volquetas/?PLACA=' + data.PLACA, data).then(function (result) {
         serviceNotification.success("Volqueta actualizada", 3000, 'scc-update-volqueta');
         deferred.resolve(result);
       },function (result) {
@@ -65,7 +65,7 @@
     function deleteVolqueta(data) {
       var deferred = $q.defer();
 
-      $http.delete('http://127.0.0.1:8089/volquetas/?PLACA=' + data.PLACA).then(function (result) {
+      $http.delete(constantConfig.serverIp + '/volquetas/?PLACA=' + data.PLACA).then(function (result) {
         serviceNotification.warning("Volqueta eliminada", 3000, 'scc-delete-volqueta');
         deferred.resolve(result);
       }, function (result) {

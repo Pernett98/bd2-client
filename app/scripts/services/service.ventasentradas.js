@@ -13,14 +13,14 @@
     .module('bd2ClientApp')
     .service('serviceVentasEntradas', serviceVentasEntradas);
 
-  serviceVentasEntradas.$inject = ['$http'];
+  serviceVentasEntradas.$inject = ['$http', 'constantConfig'];
 
   /* @ngInject */
-  function serviceVentasEntradas($http) {
+  function serviceVentasEntradas($http, constantConfig) {
     this.getAllVentasEntradas = getAllVentasEntradas;
 
     function getAllVentasEntradas() {
-      return $http.get('http://127.0.0.1:8089/ventas_entradas');
+      return $http.get(constantConfig.serverIp + '/ventas_entradas');
     }
   }
 })();

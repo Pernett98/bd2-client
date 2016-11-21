@@ -20,14 +20,14 @@ angular.module('bd2ClientApp')
         .module('bd2ClientApp')
         .service('serviceModelos', serviceModelos);
 
-    serviceModelos.$inject = ['$http'];
+    serviceModelos.$inject = ['$http', 'constantConfig'];
 
     /* @ngInject */
-    function serviceModelos($http) {
+    function serviceModelos($http, constantConfig) {
         this.getAllModelos = getAllModelos;
 
         function getAllModelos() {
-          return $http.get('http://127.0.0.1:8089/modelos');
+          return $http.get(constantConfig.serverIp + '/modelos');
         }
     }
 })();
