@@ -21,6 +21,22 @@
         templateUrl: 'views/volquetas.html',
         controller: 'VolquetasCtrl as volquetasVm'
       })
+      .when('/empresas', {
+        templateUrl: 'views/empresas.html',
+        controller: 'EmpresasCtrl as empresasVm'
+      })
+      .when('/marcas', {
+        templateUrl: 'views/marcas.html',
+        controller: 'MarcasCtrl as marcasVm'
+      })
+      .when('/modelos', {
+        templateUrl: 'views/modelos.html',
+        controller: 'ModelosCtrl as modelosVm'
+      })
+      .when('/colores', {
+        templateUrl: 'views/colores.html',
+        controller: 'ColoresCtrl as coloresVm'
+      })
       .otherwise({
         redirectTo: '/'
       });

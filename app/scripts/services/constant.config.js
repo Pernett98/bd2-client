@@ -9,5 +9,5 @@
  */
 angular.module('bd2ClientApp')
   .constant('constantConfig', {
-    serverIp: 'http://192.168.6.137:8089'
+    serverIp: 'http://localhost:8089'    
   });
