@@ -15,14 +15,15 @@
     </thead>
 
     <tbody>
-      <tr ng-repeat="empresa in VentasEntradasVM.ventas">
-        <td>{{empresa.ID_VENTA}}</td>
-        <td>{{empresa.EMPRESA}}</td>
-        <td>{{empresa.PLACA}}</td>
-        <td>{{empresa.FECHA_VENTA | date}}</td>
-        <td>{{empresa.VALOR_ENTRADA}}</td>
-        <td>{{empresa.CANTIDAD_ENTRADAS}}</td>
-        <td>{{empresa.NOMBRE_USUARIO}}</td>
+      <tr ng-repeat="venta in ventasEntradasVm.ventas">
+        {{venta}}
+        <td>{{venta.ID_VENTA}}</td>
+        <td>{{venta.EMPRESA}}</td>
+        <td>{{venta.PLACA}}</td>
+        <td>{{venta.FECHA_VENTA | date}}</td>
+        <td>{{venta.VALOR_ENTRADA}}</td>
+        <td>{{venta.CANTIDAD_ENTRADAS}}</td>
+        <td>{{venta.NOMBRE_USUARIO}}</td>
 
 
         <td>

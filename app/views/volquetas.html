@@ -34,7 +34,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col s6 m6">
+            <div class="col s12 m12">
               <md-input-container>
                 <label for="coloresInput">Color</label>
                 <md-select id="coloresInput" ng-model="volquetasVm.formVolqueta.ID_COLOR" required>
@@ -44,10 +44,24 @@
                 </md-select>
               </md-input-container>
             </div>
+          </div>
+          <div class="row">
+            <div class="col m6 s6">
+              <md-input-container>
+                <label for="modeloInput">Marca</label>
+                <md-select id="modeloInput" ng-model="volquetasVm.formVolqueta.ID_MARCA_VOLQUETA" ng-change"volquetasVm.getModelosById()" >
+                  <md-option ng-click="volquetasVm.getAllModelos()"><em>Todos las marcas</em></md-option>
+                  <md-option ng-repeat="marca in volquetasVm.marcas" ng-value="marca.ID_MARCA_VOLQUETA" ng-click="volquetasVm.getModelosById(marca.ID_MARCA_VOLQUETA)">
+                    {{marca.NOMBRE_MARCA}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+            </div>
             <div class="col s6 m6">
               <md-input-container>
                 <label for="modeloInput">Modelo</label>
                 <md-select id="modeloInput" ng-model="volquetasVm.formVolqueta.ID_MODELO" required>
+                  <md-option ng-if="!volquetasVm.modelos.length"><em>No hay modelos de esa marca</em></md-option>
                   <md-option ng-repeat="modelo in volquetasVm.modelos" ng-value="modelo.ID_MODELO">
                     {{modelo.DESCRIPCION_MODELO + ' - ' + modelo.NOMBRE_MARCA}}
                   </md-option>
@@ -64,45 +78,6 @@
     </md-sidenav>
 
     <div class="row">
-      <!-- <table class="highlight responsive-table">
-        <thead>
-          <tr>
-            <th data-field="id_car">Placa de volqueta</th>
-            <th data-field="id">Empresa</th>
-            <th data-field="id">Marca</th>
-            <th data-field="id">Modelo</th>
-            <th data-field="id">Color</th>
-            <th data-field="acctions">Acciones</th>
-
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr ng-repeat="volqueta in volquetasVm.volquetas">
-            <td>{{volqueta.PLACA}}</td>
-            <td>{{volqueta.EMPRESA}}</td>
-            <td>{{volqueta.MARCA}}</td>
-            <td>{{volqueta.MODELO_VOLQUETA}}</td>
-            <td>{{volqueta.COLOR_VOLQUETA}}</td>
-            <td>{{volqueta.NOMBRE_USUARIO}}</td>
-
-            <td>
-              <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-
-                <md-button class="md-fab md-primary " aria-label="Editar" ng-click="volquetasVm.openEditModal(volqueta)">
-                  <md-icon md-font-icon="mdi mdi-pencil"></md-icon>
-                </md-button>
-
-                <md-button class="md-fab red" aria-label="Eliminar" ng-click="volquetasVm.confirmDelete(volqueta)">
-                  <md-icon md-font-icon="mdi mdi-delete"></md-icon>
-                </md-button>
-
-              </section>
-            </td>
-          </tr>
-        </tbody>
-      </table> -->
-
       <md-toolbar class="md-table-toolbar md-default" ng-hide="volquetasVm.selected.length">
         <div class="md-toolbar-tools">
           <span>Volquetas</span>

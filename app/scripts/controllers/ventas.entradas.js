@@ -19,6 +19,7 @@
   /* @ngInject */
   function VentasEntradasCtrl(serviceVentasEntradas) {
     var vm = this;
+    vm.ventas = [];
 
     getVentas();
 

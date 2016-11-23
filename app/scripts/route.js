@@ -37,6 +37,10 @@
         templateUrl: 'views/colores.html',
         controller: 'ColoresCtrl as coloresVm'
       })
+      .when('/ventas_entradas', {
+        templateUrl: 'views/ventas.entradas.html',
+        controller: 'VentasEntradasCtrl as ventasEntradasVm'
+      })
       .otherwise({
         redirectTo: '/'
       });

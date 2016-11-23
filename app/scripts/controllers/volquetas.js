@@ -13,16 +13,17 @@
     .module('bd2ClientApp')
     .controller('VolquetasCtrl', VolquetasCtrl);
 
-  VolquetasCtrl.$inject = ['serviceVolquetas', '$mdSidenav', 'serviceEmpresas', 'serviceColores', 'serviceModelos', '$mdDialog', 'serviceNotification'];
+  VolquetasCtrl.$inject = ['serviceVolquetas', '$mdSidenav', 'serviceEmpresas', 'serviceColores', 'serviceModelos', '$mdDialog', 'serviceNotification', 'serviceMarcas', '$scope'];
 
   /* @ngInject */
-  function VolquetasCtrl(serviceVolquetas, $mdSidenav, serviceEmpresas, serviceColores, serviceModelos, $mdDialog, serviceNotification) {
+  function VolquetasCtrl(serviceVolquetas, $mdSidenav, serviceEmpresas, serviceColores, serviceModelos, $mdDialog, serviceNotification, serviceMarcas, $scope) {
     var vm = this;
     vm.formVolqueta = {};
     vm.volquetas = [];
     vm.empresas = [];
     vm.colores = [];
     vm.modelos = [];
+    vm.marcas = [];
 
     vm.modalConfig = {
       title: 'Crear Volqueta',
@@ -39,10 +40,14 @@
     vm.createVolqueta = createVolqueta;
     vm.openEditModal = openEditModal;
     vm.confirmDelete = confirmDelete;
+    vm.showDetailMessage = showDetailMessage;
+    vm.getAllModelos = getAllModelos;
+    vm.getModelosById = getModelosById;
 
     getAllVolquetas();
     getAllEmpresas();
     getAllColores();
+    getAllMarcas();
     getAllModelos();
 
     function getAllVolquetas() {
@@ -64,8 +69,20 @@
       });
     }
 
+    function getAllMarcas( ) {
+      serviceMarcas.getAllMarcas().then(function (result) {
+        vm.marcas = result.data;
+      });
+    }
+
     function getAllModelos() {
       serviceModelos.getAllModelos().then(function(result) {
+        vm.modelos = result.data;
+      });
+    }
+
+    function getModelosById(idMarca) {
+      serviceModelos.getModelosByIdMarca(idMarca).then(function (result) {
         vm.modelos = result.data;
       });
     }
@@ -123,6 +140,10 @@
       });
     }
 
+    function showDetailMessage() {
+      console.log('lol funca');
+    }
+
     function buildToggler(navID) {
       return function() {
         // Component lookup should always be available since we are not using `ng-if`
@@ -133,6 +154,11 @@
           });
       }
     }
+
+    $scope.$watch(vm.formVolqueta, function (x, y) {
+      console.log(x);
+      console.log(y);
+    });
 
   }
 })();

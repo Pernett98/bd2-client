@@ -70,7 +70,7 @@
         deferred.resolve(result);
       }, function (result) {
         console.log(result);
-        serviceNotification.error(result.data.message, 3000, 'err-delete-volqueta');
+        serviceNotification.error(result.data.message + constantConfig.errorDeatailTemplate, 3000, 'err-delete-volqueta');
         deferred.reject(result);
       });
 
