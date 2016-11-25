@@ -21,7 +21,8 @@ angular
     'ui.materialize',
     'md.data.table',
     'ui.router',
-    'md.data.table'
+    'md.data.table',
+    'angular-loading-bar'
   ]);
 
 
