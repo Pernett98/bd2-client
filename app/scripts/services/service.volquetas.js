@@ -28,7 +28,7 @@
       $http.get(constantConfig.serverIp + '/volquetas').then(function(result) {
         deferred.resolve(result.data);
       }, function(err) {
-        reject(err);
+        deferred.reject(err);
       });
 
       return deferred.promise;
